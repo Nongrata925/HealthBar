@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int _maxAmount = 100;
+    private int _max = 100;
     private int _minAmount;
 
-    public int CurrentHealth { get; private set; }
+    public int Current { get; private set; }
     
-    public int MaxAmount => _maxAmount;
+    public int Max => _max;
     
     public event Action<int, int> Changed;
 
     private void Awake()
     {
-        CurrentHealth = _maxAmount;
+        Current = _max;
     }
 
     public void Decrease(int amount)
@@ -24,14 +24,14 @@ public class Health : MonoBehaviour
             return;
         }
         
-        CurrentHealth -= amount;
+        Current -= amount;
 
-        if (CurrentHealth <= _minAmount)
+        if (Current <= _minAmount)
         {
-            CurrentHealth = _minAmount;
+            Current = _minAmount;
         }
         
-        Changed?.Invoke(CurrentHealth, _maxAmount);
+        Changed?.Invoke(Current, _max);
     }
 
     public void Increase(int amount)
@@ -41,13 +41,13 @@ public class Health : MonoBehaviour
             return;
         }
         
-        CurrentHealth += amount;
+        Current += amount;
 
-        if (CurrentHealth > _maxAmount)
+        if (Current > _max)
         {
-            CurrentHealth = _maxAmount;
+            Current = _max;
         }
         
-        Changed?.Invoke(CurrentHealth, _maxAmount);
+        Changed?.Invoke(Current, _max);
     }
 }

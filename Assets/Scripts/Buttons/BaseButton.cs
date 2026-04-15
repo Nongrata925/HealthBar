@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public abstract class BaseButton : MonoBehaviour
 {
     [SerializeField] protected Health Health;
-    [SerializeField] protected int Value = 10;
+    [SerializeField] protected int Value;
     
     private Button _button;
 
